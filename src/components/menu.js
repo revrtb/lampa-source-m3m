@@ -321,7 +321,7 @@ function ready(){
         if(prepared(action,['main'])){
             Activity.push({
                 url: '',
-                title: Lang.translate('title_main') + ' - ' + Storage.field('source').toUpperCase(),
+                title: Lang.translate('title_main') + ' - ' + 'Coralmovies',//Storage.field('source').toUpperCase(),
                 component: 'main',
                 source: Storage.field('source')
             })

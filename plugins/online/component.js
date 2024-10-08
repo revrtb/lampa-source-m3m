@@ -10,7 +10,7 @@ function component(object){
     let scroll   = new Lampa.Scroll({mask:true,over: true})
     let files    = new Lampa.Files(object)
     let filter   = new Lampa.Filter(object)
-    let balanser = Lampa.Storage.get('online_balanser', 'videocdn')
+    let balanser = Lampa.Storage.get('online_balanser', 'collaps')
     let last_bls = Lampa.Storage.cache('online_last_balanser', 200, {})
 
     if(last_bls[object.movie.id]){
@@ -50,15 +50,15 @@ function component(object){
         source: Lampa.Lang.translate('settings_rest_source')
     }
 
-    let filter_sources = ['videocdn','rezka','kinobase','collaps','filmix']
+    let filter_sources = ['collaps','rezka','kinobase','videocdn','filmix']
     let ignore_sources = ['filmix','kinobase']
     let kiposk_sources = ['rezka','collaps']
 
     // шаловливые ручки
     if(filter_sources.indexOf(balanser) == -1){
-        balanser = 'videocdn'
+        balanser = 'collaps'
 
-        Lampa.Storage.set('online_balanser', 'videocdn')
+        Lampa.Storage.set('online_balanser', 'collaps')
     }
 
     scroll.body().addClass('torrent-list')

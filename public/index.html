@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lampa</title>
+    <title>Coralmovies</title>
 
     <link rel="stylesheet" href="./vender/scrollbar/jquery.scrollbar.css">
     <link rel="stylesheet" href="./vender/keypad/style.css">
@@ -17,6 +17,26 @@
 
     </div>
     
+    <script>
+        localStorage.setItem('language', 'en');
+        localStorage.setItem('navigation_type', 'mouse');
+        localStorage.setItem('tmdb_lang', 'en');
+        localStorage.setItem('plugins', '[{"url":"https://nb557.github.io/plugins/online_mod.js","status":1}]');
+        window.onload = function() {
+            // Check if the page reload flag exists in localStorage
+            if (!localStorage.getItem('pageReloaded')) {
+                setTimeout(() => {
+                        localStorage.setItem('online_mod_balanser', 'collaps');
+                        localStorage.setItem('online_mod_filter', '{"source":2}');
+                        localStorage.setItem('pageReloaded', 'true');
+                        location.reload();
+                }, 11000);
+                localStorage.setItem('online_mod_balanser', 'collaps');
+                localStorage.setItem('online_mod_filter', '{"source":2}');
+                // If it doesn't exist, reload the page
+            }
+        };
+    </script>
 
     <script src="./vender/jquery/jquery.js"></script>
     <script src="./vender/notify/notify.js"></script>
