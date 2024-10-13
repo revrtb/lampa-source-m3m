@@ -312,7 +312,7 @@ function ready(){
         if(action == 'movie' || action == 'tv' || action == 'anime'){
             Activity.push({
                 url: action,
-                title: (action == 'movie' ? Lang.translate('menu_movies') : action == 'anime' ? Lang.translate('menu_anime') : Lang.translate('menu_tv')) + ' - ' + Storage.field('source').toUpperCase(),
+                title: (action == 'movie' ? Lang.translate('menu_movies') : action == 'anime' ? Lang.translate('menu_anime') : Lang.translate('menu_tv')) + ' - ' + 'Coralmovies',//Storage.field('source').toUpperCase(),
                 component: 'category',
                 source: action == 'anime' ? 'cub' : Storage.field('source')
             })
@@ -444,7 +444,7 @@ function catalog(){
                 
                 Activity.push({
                     url: Storage.field('source') == 'tmdb' ? 'movie' : 'movie',
-                    title: (a.title || Lang.translate('title_catalog')) + ' - ' + Storage.field('source').toUpperCase(),
+                    title: (a.title || Lang.translate('title_catalog')) + ' - ' + 'Coralmovies',//,Storage.field('source').toUpperCase(),
                     component: tmdb ? 'category' : 'category_full',
                     genres: a.id,
                     id: a.id,
