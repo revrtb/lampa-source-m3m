@@ -249,7 +249,7 @@
             left: -0.5em;
             right: -0.5em;
             bottom: -0.5em;
-            border: 0.3em solid #fff;
+            border: 0.3em solid #000;
             border-radius: 1.4em;
             z-index: -1;
             pointer-events: none;
@@ -257,7 +257,7 @@
     }
 
     &.hover .card__view::after{
-        border-color: rgba(255,255,255,0.5);
+        border-color: rgba(0,0,0,0.5);
     }
 
     &--prefab{

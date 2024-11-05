@@ -315,7 +315,7 @@ export default {
     title_error: 'Error',
     title_links: 'Links',
     title_choice: 'Choose',
-    title_main: 'Home',
+    title_main: 'Main',
     title_book: 'Bookmarks',
     title_like: 'Like',
     title_wath: 'Later',
@@ -655,7 +655,7 @@ export default {
     empty_title_two: 'It\'s empty here',
     empty_text_two: 'The list is currently empty.',
 
-    menu_main: 'Home',
+    menu_main: 'Main',
     menu_movies: 'Movies',
     menu_tv: 'Series',
     menu_catalog: 'Catalog',
