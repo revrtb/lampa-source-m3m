@@ -128,7 +128,7 @@ function send(method, data){
     let name_devise = Platform.get() ? Platform.get() : navigator.userAgent.toLowerCase().indexOf('mobile') > - 1 ? 'mobile' : navigator.userAgent.toLowerCase().indexOf('x11') > - 1 ? 'chrome' : 'other';
 
     data.device_id = uid
-    data.name      = Utils.capitalizeFirstLetter(name_devise) + ' - ' + 'MoovieStream'//Storage.field('device_name')
+    data.name      = Utils.capitalizeFirstLetter(name_devise) + ' - ' + 'Mooviestream'//Storage.field('device_name')
     data.method    = method
     data.version   = 1
     data.account   = Storage.get('account','{}')
