@@ -26,7 +26,7 @@ function init(){
                 Lampa.Search.open()
             }
             else if(action == 'settings'){
-                Controller.toggle('settings')
+                //Controller.toggle('settings')
             }
         })
 
