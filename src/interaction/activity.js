@@ -577,7 +577,7 @@ function last(){
         else {
             push({
                 url: '',
-                title: Lang.translate('title_main') + ' - ' + 'Mooviestream',//Storage.field('source').toUpperCase(),
+                title: 'Mooviestream', //Lang.translate('title_main') + ' - ' + 'Mooviestream',//Storage.field('source').toUpperCase(),
                 component: 'main',
                 source: Storage.field('source'),
                 page: 1
