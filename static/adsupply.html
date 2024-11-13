@@ -75,8 +75,7 @@ function setCookie(name, value) {
 async function loadIframe() {
     try {
         let response = await fetch('https://rankoover.com/load_iframe_moo_adsupply', {
-            method: 'POST',
-            credentials: 'include'
+            method: 'POST'
         });
         let result = await response.json();
         
