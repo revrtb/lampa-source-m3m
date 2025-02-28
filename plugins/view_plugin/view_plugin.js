@@ -51,7 +51,7 @@ function startPlugin() {
                     })
                 },
                 onBack: ()=>{
-                    Lampa.Controller.toggle('menu')
+                    // Lampa.Controller.toggle('menu')
                 }
             })
         })

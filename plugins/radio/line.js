@@ -51,7 +51,7 @@ function create(data, params = {}){
             left: ()=>{
                 if(Navigator.canmove('left')) Navigator.move('left')
                 else if(this.onLeft) this.onLeft()
-                else Lampa.Controller.toggle('menu')
+                // else Lampa.Controller.toggle('menu')
             },
             down: this.onDown,
             up:   this.onUp,

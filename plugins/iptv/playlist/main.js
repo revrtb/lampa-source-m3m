@@ -136,7 +136,7 @@ class Playlist{
                 Lampa.Controller.collectionFocus(this.last,this.html)
             },
             left: ()=>{
-                Lampa.Controller.toggle('menu')
+                // Lampa.Controller.toggle('menu')
             },
             down: Navigator.move.bind(Navigator,'down'),
             up: ()=>{

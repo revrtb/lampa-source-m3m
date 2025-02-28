@@ -1,6 +1,6 @@
 .card{
     flex-shrink: 0;
-    width: 12.75em;
+    width: 10em;
     position: relative;
     will-change: transform;
 
@@ -9,7 +9,7 @@
     }
 
     &__img{
-        border-radius: 1em;
+        border-radius: 0em;
         position: absolute;
         top: 0;
         left: 0;
@@ -46,7 +46,7 @@
             top: 0.9em;
             left: 0;
             right: 0;
-            display: flex;
+            display: none;
             justify-content: center;
 
         &-inner{
@@ -249,7 +249,7 @@
             left: -0.5em;
             right: -0.5em;
             bottom: -0.5em;
-            border: 0.3em solid #000;
+            border: 0.3em solid #000 transparent;
             border-radius: 1.4em;
             z-index: -1;
             pointer-events: none;

@@ -32,6 +32,8 @@ function init(){
         Controller.toggle('settings')
     })
 
+    Controller.toggle('menu')
+
     html.find('.open--notice').on('hover:enter',Notice.open.bind(Notice))
 
     html.find('.open--search').on('hover:enter',Search.open.bind(Search))
@@ -91,7 +93,7 @@ function init(){
         },
         left: ()=>{
             if(Navigator.canmove('left')) Navigator.move('left')
-            else Controller.toggle('menu')
+            // else Controller.toggle('menu')
         },
         down: ()=>{
             Controller.toggle('content')

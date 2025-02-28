@@ -632,7 +632,7 @@ function component(object){
             },
             left: ()=>{
                 if(Navigator.canmove('left')) Navigator.move('left')
-                else Lampa.Controller.toggle('menu')
+                // else Lampa.Controller.toggle('menu')
             },
             back: this.back
         })

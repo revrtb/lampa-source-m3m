@@ -285,7 +285,7 @@ function component(object){
                 }
             },
             left: ()=>{
-                Controller.toggle('menu')
+                // Controller.toggle('menu')
             },
             up: ()=>{
                 Controller.toggle('head')

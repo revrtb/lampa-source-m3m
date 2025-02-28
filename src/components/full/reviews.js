@@ -72,7 +72,7 @@ function create(data, params = {}){
             },
             left: ()=>{
                 if(Navigator.canmove('left')) Navigator.move('left')
-                else Controller.toggle('menu')
+                // else Controller.toggle('menu')
             },
             down:this.onDown,
             up: this.onUp,

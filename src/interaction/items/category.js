@@ -203,7 +203,7 @@ function component(object){
             },
             left: ()=>{
                 if(Navigator.canmove('left')) Navigator.move('left')
-                else Controller.toggle('menu')
+                // else Controller.toggle('menu')
             },
             right: ()=>{
                 if(this.onRight){

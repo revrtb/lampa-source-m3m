@@ -140,7 +140,7 @@ function component(object){
             },
             update: ()=>{},
             left: ()=>{
-                Controller.toggle('menu')
+                // Controller.toggle('menu')
             },
             up: ()=>{
                 Controller.toggle('head')

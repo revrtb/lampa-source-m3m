@@ -224,44 +224,44 @@ function category(params = {}, oncomplite, onerror){
     
     let parts_limit = 6
     let parts_data  = [
-        (call)=>{
-            let json = {results: books,title: params.url == 'tv' ? Lang.translate('title_continue') : Lang.translate('title_watched')}
+        // (call)=>{
+        //     let json = {results: books,title: params.url == 'tv' ? Lang.translate('title_continue') : Lang.translate('title_watched')}
 
-            if(params.url == 'tv'){
-                json.ad    = 'notice',
-                json.type  = params.url
-            }
+        //     if(params.url == 'tv'){
+        //         json.ad    = 'notice',
+        //         json.type  = params.url
+        //     }
 
-            call(json)
-        },
-        (call)=>{
-            if(params.url == 'tv' || params.url == 'anime'){
-                call({
-                    results: TimeTable.lately().slice(0,20),
-                    title: Lang.translate('title_upcoming_episodes'),
-                    nomore: true,
-                    cardClass: (_elem, _params)=>{
-                        return new Episode(_elem, _params)
-                    }
-                })
-            }
-            else{
-                call()
-            }
-        },
+        //     call(json)
+        // },
+        // (call)=>{
+        //     if(params.url == 'tv' || params.url == 'anime'){
+        //         call({
+        //             results: TimeTable.lately().slice(0,20),
+        //             title: Lang.translate('title_upcoming_episodes'),
+        //             nomore: true,
+        //             cardClass: (_elem, _params)=>{
+        //                 return new Episode(_elem, _params)
+        //             }
+        //         })
+        //     }
+        //     else{
+        //         call()
+        //     }
+        // },
         (call)=>{
             call({results: recomend,title: Lang.translate('title_recomend_watch')})
         },
-        (call)=>{
-            if(params.url == 'movie'){
-                get('discover/' + params.url + '?with_release_type=3',params,(json)=>{
-                    json.title = Lang.translate('title_now_watch')
+        // (call)=>{
+        //     if(params.url == 'movie'){
+        //         get('discover/' + params.url + '?with_release_type=3',params,(json)=>{
+        //             json.title = Lang.translate('title_now_watch')
 
-                    call(json)
-                },call)
-            }
-            else call()
-        },
+        //             call(json)
+        //         },call)
+        //     }
+        //     else call()
+        // },
         (call)=>{
             get(params.url == 'movie' ? 'discover/movie' : 'trending/tv/day',params,(json)=>{
                 json.title = Lang.translate('title_popular')
@@ -274,27 +274,27 @@ function category(params = {}, oncomplite, onerror){
                 call(json)
             },call)
         },
-        (call)=>{
-            get('discover/' + params.url + '?'+(params.url == 'movie' ? 'primary_release_year' : 'first_air_date_year')+'=' + (new Date().getFullYear() - 1),params,(json)=>{
-                json.title = Lang.translate('title_last_year')
+        // (call)=>{
+        //     get('discover/' + params.url + '?'+(params.url == 'movie' ? 'primary_release_year' : 'first_air_date_year')+'=' + (new Date().getFullYear() - 1),params,(json)=>{
+        //         json.title = Lang.translate('title_last_year')
 
-                call(json)
-            },call)
-        },
-        (call)=>{
-            let lte = (new Date().getFullYear() - 2) + '-12-31'
-            let gte = (new Date().getFullYear() - 7) + '-01-01'
-            let reg = (params.url == 'movie' ? 'primary_release_date' : 'first_air_date')
+        //         call(json)
+        //     },call)
+        // },
+        // (call)=>{
+        //     let lte = (new Date().getFullYear() - 2) + '-12-31'
+        //     let gte = (new Date().getFullYear() - 7) + '-01-01'
+        //     let reg = (params.url == 'movie' ? 'primary_release_date' : 'first_air_date')
 
-            lte = reg + '.lte=' + lte
-            gte = reg + '.gte=' + gte
+        //     lte = reg + '.lte=' + lte
+        //     gte = reg + '.gte=' + gte
 
-            get('discover/' + params.url + '?' + lte + '&' + gte,params,(json)=>{
-                json.title = Lang.translate('title_worth_rewatch')
+        //     get('discover/' + params.url + '?' + lte + '&' + gte,params,(json)=>{
+        //         json.title = Lang.translate('title_worth_rewatch')
 
-                call(json)
-            },call)
-        },
+        //         call(json)
+        //     },call)
+        // },
         (call)=>{
             let lte = (new Date().getFullYear() - 2) + '-12-31'
             let gte = (new Date().getFullYear() - 7) + '-01-01'
@@ -309,51 +309,51 @@ function category(params = {}, oncomplite, onerror){
                 call(json)
             },call)
         },
-        (call)=>{
-            if(params.genres) return call()
+        // (call)=>{
+        //     if(params.genres) return call()
 
-            if(params.url == 'tv'){
-                get('trending/tv/week',params,(json)=>{
-                    json.title = Lang.translate('title_this_week')
+        //     if(params.url == 'tv'){
+        //         get('trending/tv/week',params,(json)=>{
+        //             json.title = Lang.translate('title_this_week')
     
-                    call(json)
-                },call)
-            }
-            else{
-                get('movie/upcoming',params,(json)=>{
-                    json.title = Lang.translate('title_upcoming')
+        //             call(json)
+        //         },call)
+        //     }
+        //     else{
+        //         get('movie/upcoming',params,(json)=>{
+        //             json.title = Lang.translate('title_upcoming')
 
-                    json.small = true
-                    json.wide = true
+        //             json.small = true
+        //             json.wide = true
 
-                    json.results.forEach(card=>{
-                        card.promo = card.overview
-                        card.promo_title = card.title || card.name
-                    })
+        //             json.results.forEach(card=>{
+        //                 card.promo = card.overview
+        //                 card.promo_title = card.title || card.name
+        //             })
     
-                    call(json)
-                },call)
-            }
-        }
+        //             call(json)
+        //         },call)
+        //     }
+        // }
     ]
 
     if(fullcat) Arrays.insert(parts_data,0,Api.partPersons(parts_data, parts_limit, params.url))
 
-    genres[params.url].forEach(genre=>{
-        let gen = params.genres ? [].concat(params.genres, genre.id) : [genre.id]
+    // genres[params.url].forEach(genre=>{
+    //     let gen = params.genres ? [].concat(params.genres, genre.id) : [genre.id]
 
-        if(params.genres && params.genres == genre.id) return
+    //     if(params.genres && params.genres == genre.id) return
 
-        let event = (call)=>{
-            get('discover/' + params.url+'?with_genres='+gen.join(','),params,(json)=>{
-                json.title = Lang.translate(genre.title.replace(/[^a-z_]/g,''))
+    //     let event = (call)=>{
+    //         get('discover/' + params.url+'?with_genres='+gen.join(','),params,(json)=>{
+    //             json.title = Lang.translate(genre.title.replace(/[^a-z_]/g,''))
 
-                call(json)
-            },call)
-        }
+    //             call(json)
+    //         },call)
+    //     }
 
-        parts_data.push(event)
-    })
+    //     parts_data.push(event)
+    // })
 
     function loadPart(partLoaded, partEmpty){
         Api.partNext(parts_data, parts_limit, partLoaded, partEmpty)

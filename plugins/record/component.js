@@ -417,7 +417,7 @@ function Component(){
             },
             left: ()=>{
                 if(Navigator.canmove('left')) Navigator.move('left')
-                else Lampa.Controller.toggle('menu')
+                // else Lampa.Controller.toggle('menu')
             },
             right: ()=>{
                 Navigator.move('right')

@@ -245,7 +245,7 @@ class Menu{
                 Lampa.Controller.collectionFocus(this.last,this.html)
             },
             left: ()=>{
-                Lampa.Controller.toggle('menu')
+                // Lampa.Controller.toggle('menu')
             },
             right: ()=>{
                 this.listener.send('toggle','icons')

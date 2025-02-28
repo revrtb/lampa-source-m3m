@@ -100,7 +100,7 @@ function Component(){
                 }
             },
             left: ()=>{
-                Lampa.Controller.toggle('menu')
+                // Lampa.Controller.toggle('menu')
             },
             up: ()=>{
                 Lampa.Controller.toggle('head')

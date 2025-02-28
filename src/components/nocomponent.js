@@ -52,7 +52,7 @@ function component(object){
                 Controller.collectionFocus(false,empty.render())
             },
             left: ()=>{
-                Controller.toggle('menu')
+                // Controller.toggle('menu')
             },
             up: ()=>{
                 Controller.toggle('head')

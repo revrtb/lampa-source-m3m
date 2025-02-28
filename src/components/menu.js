@@ -40,9 +40,11 @@ function init(){
 
     controller()
 
+    $('body').toggleClass('menu--open',true)
+
     $('body').on('mouseup',(e)=>{
         if($('body').hasClass('menu--open') && DeviceInput.canClick(e.originalEvent)){
-            $('body').toggleClass('menu--open',false)
+            // $('body').toggleClass('menu--open',false)
 
             disableEditMode()
 
@@ -165,7 +167,7 @@ function controller(){
             else if(Navigator.canmove('down')) Navigator.move('down')
         },
         gone: ()=>{
-            $('body').toggleClass('menu--open',false)
+            // $('body').toggleClass('menu--open',false)
 
             visible_timer = setTimeout(()=>{
                 $('.wrap__left').addClass('wrap__left--hidden')
@@ -318,11 +320,11 @@ function ready(){
             })
         }
 
-        if(prepared(action,['main'])){
+        if(prepared(action,['movies'])){
             Activity.push({
-                url: '',
-                title: 'Mooviestream', //Lang.translate('title_main') + ' - ' + 'Mooviestream',//Storage.field('source').toUpperCase(),
-                component: 'main',
+                url: 'movie',
+                title: 'Movies', //Lang.translate('title_main') + ' - ' + 'Mooviestream',//Storage.field('source').toUpperCase(),
+                component: 'category',
                 source: Storage.field('source')
             })
         }
@@ -454,7 +456,7 @@ function catalog(){
                 })
             },
             onBack: ()=>{
-                Controller.toggle('menu')
+                // Controller.toggle('menu')
             }
         })
     })
