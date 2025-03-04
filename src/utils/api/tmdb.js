@@ -125,44 +125,44 @@ function find(find, params = {}){
 function main(params = {}, oncomplite, onerror){
     let parts_limit = 6
     let parts_data  = [
-        (call)=>{
-            get('movie/now_playing',params,(json)=>{
-                json.title = Lang.translate('title_now_watch')
+        // (call)=>{
+        //     get('movie/now_playing',params,(json)=>{
+        //         json.title = Lang.translate('title_now_watch')
 
-                call(json)
-            },call)
-        },
-        (call)=>{
-            call({
-                results: TimeTable.lately().slice(0,20),
-                title: Lang.translate('title_upcoming_episodes'),
-                nomore: true,
-                cardClass: (_elem, _params)=>{
-                    return new Episode(_elem, _params)
-                }
-            })
-        },
-        (call)=>{
-            get('trending/movie/day',params,(json)=>{
-                json.title = Lang.translate('title_trend_day')
+        //         call(json)
+        //     },call)
+        // },
+        // (call)=>{
+        //     call({
+        //         results: TimeTable.lately().slice(0,20),
+        //         title: Lang.translate('title_upcoming_episodes'),
+        //         nomore: true,
+        //         cardClass: (_elem, _params)=>{
+        //             return new Episode(_elem, _params)
+        //         }
+        //     })
+        // },
+        // (call)=>{
+        //     get('trending/movie/day',params,(json)=>{
+        //         json.title = Lang.translate('title_trend_day')
 
-                call(json)
-            },call)
-        },
-        (call)=>{
-            get('trending/movie/week',params,(json)=>{
-                json.title = Lang.translate('title_trend_week')
+        //         call(json)
+        //     },call)
+        // },
+        // (call)=>{
+        //     get('trending/movie/week',params,(json)=>{
+        //         json.title = Lang.translate('title_trend_week')
 
-                call(json)
-            },call)
-        },
-        (call)=>{
-            get('movie/upcoming',params,(json)=>{
-                json.title = Lang.translate('title_upcoming')
+        //         call(json)
+        //     },call)
+        // },
+        // (call)=>{
+        //     get('movie/upcoming',params,(json)=>{
+        //         json.title = Lang.translate('title_upcoming')
 
-                call(json)
-            },call)
-        },
+        //         call(json)
+        //     },call)
+        // },
         (call)=>{
             get('movie/popular',params,(json)=>{
                 json.title = Lang.translate('title_popular_movie')
@@ -195,17 +195,17 @@ function main(params = {}, oncomplite, onerror){
 
     Arrays.insert(parts_data,0,Api.partPersons(parts_data, parts_limit, 'movie'))
 
-    genres.movie.forEach(genre=>{
-        let event = (call)=>{
-            get('discover/movie?with_genres='+genre.id,params,(json)=>{
-                json.title = Lang.translate(genre.title.replace(/[^a-z_]/g,''))
+    // genres.movie.forEach(genre=>{
+    //     let event = (call)=>{
+    //         get('discover/movie?with_genres='+genre.id,params,(json)=>{
+    //             json.title = Lang.translate(genre.title.replace(/[^a-z_]/g,''))
 
-                call(json)
-            },call)
-        }
+    //             call(json)
+    //         },call)
+    //     }
 
-        parts_data.push(event)
-    })
+    //     parts_data.push(event)
+    // })
 
     function loadPart(partLoaded, partEmpty){
         Api.partNext(parts_data, parts_limit, partLoaded, partEmpty)

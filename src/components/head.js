@@ -40,6 +40,7 @@ function init(){
 
     html.find('.head__logo-icon,.head__menu-icon').on('click',(e)=>{
         if(DeviceInput.canClick(e.originalEvent)) Controller.toggle('menu')
+        window.location.href = window.location.origin;
     })
 
     Storage.listener.follow('change',(e)=>{

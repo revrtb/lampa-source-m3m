@@ -320,14 +320,23 @@ function ready(){
             })
         }
 
-        if(prepared(action,['movies'])){
+        if(prepared(action,['main'])){
             Activity.push({
-                url: 'movie',
-                title: 'Movies', //Lang.translate('title_main') + ' - ' + 'Mooviestream',//Storage.field('source').toUpperCase(),
-                component: 'category',
+                url: '',
+                title: Lang.translate('title_main'),
+                component: 'main',
                 source: Storage.field('source')
             })
         }
+
+        // if(prepared(action,['movies'])){
+        //     Activity.push({
+        //         url: 'movie',
+        //         title: 'Movies', //Lang.translate('title_main') + ' - ' + 'Mooviestream',//Storage.field('source').toUpperCase(),
+        //         component: 'category',
+        //         source: Storage.field('source')
+        //     })
+        // }
 
         if(prepared(action,['myperson'])){
             Activity.push({

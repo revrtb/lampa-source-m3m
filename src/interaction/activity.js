@@ -575,20 +575,20 @@ function last(){
             })
         }
         else {
-            // push({
-            //     url: '',
-            //     title: 'Mooviestream', //Lang.translate('title_main') + ' - ' + 'Mooviestream',//Storage.field('source').toUpperCase(),
-            //     component: 'main',
-            //     source: Storage.field('source'),
-            //     page: 1
-            // })
             push({
-                url: 'movie',
-                title: 'Movies', //Lang.translate('title_main') + ' - ' + 'Mooviestream',//Storage.field('source').toUpperCase(),
-                component: 'category',
+                url: '',
+                title: Lang.translate('title_main'),//Storage.field('source').toUpperCase(),
+                component: 'main',
                 source: Storage.field('source'),
                 page: 1
             })
+            // push({
+            //     url: 'movie',
+            //     title: 'Movies', //Lang.translate('title_main') + ' - ' + 'Mooviestream',//Storage.field('source').toUpperCase(),
+            //     component: 'category',
+            //     source: Storage.field('source'),
+            //     page: 1
+            // })
         }
     }
 }
