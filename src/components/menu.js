@@ -323,7 +323,7 @@ function ready(){
         if(prepared(action,['main'])){
             Activity.push({
                 url: '',
-                title: Lang.translate('title_main'),
+                title: '', //Lang.translate('title_main'),
                 component: 'main',
                 source: Storage.field('source')
             })
