@@ -315,7 +315,7 @@ export default {
     title_error: 'Error',
     title_links: 'Links',
     title_choice: 'Choose',
-    title_main: 'Main',
+    title_main: 'Home',
     title_book: 'Bookmarks',
     title_like: 'Like',
     title_wath: 'Later',
