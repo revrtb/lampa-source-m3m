@@ -224,34 +224,10 @@ function category(params = {}, oncomplite, onerror){
     
     let parts_limit = 6
     let parts_data  = [
-        // (call)=>{
-        //     let json = {results: books,title: params.url == 'tv' ? Lang.translate('title_continue') : Lang.translate('title_watched')}
-
-        //     if(params.url == 'tv'){
-        //         json.ad    = 'notice',
-        //         json.type  = params.url
-        //     }
-
-        //     call(json)
-        // },
-        // (call)=>{
-        //     if(params.url == 'tv' || params.url == 'anime'){
-        //         call({
-        //             results: TimeTable.lately().slice(0,20),
-        //             title: Lang.translate('title_upcoming_episodes'),
-        //             nomore: true,
-        //             cardClass: (_elem, _params)=>{
-        //                 return new Episode(_elem, _params)
-        //             }
-        //         })
-        //     }
-        //     else{
-        //         call()
-        //     }
-        // },
         (call)=>{
             call({results: recomend,title: Lang.translate('title_recomend_watch')})
         },
+
         // (call)=>{
         //     if(params.url == 'movie'){
         //         get('discover/' + params.url + '?with_release_type=3',params,(json)=>{
@@ -262,6 +238,7 @@ function category(params = {}, oncomplite, onerror){
         //     }
         //     else call()
         // },
+
         (call)=>{
             get(params.url == 'movie' ? 'discover/movie' : 'trending/tv/day',params,(json)=>{
                 json.title = Lang.translate('title_popular')
