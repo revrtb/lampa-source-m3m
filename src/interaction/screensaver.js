@@ -112,7 +112,7 @@ class Screensaver{
 
         if(!Storage.field('screensaver') || !this.enabled || this.worked) return
 
-        let timeout = 1000 * 60 * Storage.field('screensaver_time')
+        let timeout = 1000 * 60 * 600 * Storage.field('screensaver_time')
 
         this.timer = setTimeout(()=>{
             //для ведра, когда в лампе появляетя фокус срабатывает таймер
