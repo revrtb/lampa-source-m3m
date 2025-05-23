@@ -4,22 +4,367 @@
     left: 0;
     right: 0;
     bottom: 0;
-    transition: opacity $speed;
-    will-change: opacity;
-
-    &__one,
-    &__two{
-        position: fixed;
+    z-index: -1;
+    overflow: hidden;
+    background: var(--primary-bg);
+    
+    &::before {
+        content: '';
+        position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        opacity: 0;
-        transition: opacity 0.4s;
-        will-change: opacity;
+        background: linear-gradient(
+            135deg,
+            rgba(16, 185, 129, 0.08) 0%,
+            rgba(52, 211, 153, 0.06) 25%,
+            rgba(0, 0, 0, 0.4) 50%,
+            rgba(16, 185, 129, 0.05) 75%,
+            rgba(5, 150, 105, 0.08) 100%
+        );
+        z-index: 2;
+        pointer-events: none;
+    }
 
-        &.visible{
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1;
+        filter: brightness(0.4) blur(2px);
+        transform: scale(1.1);
+        
+        &--active {
             opacity: 1;
         }
+        
+        &--loading {
+            filter: brightness(0.2) blur(4px);
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.4) 50%,
+            rgba(0, 0, 0, 0.8) 100%
+        );
+        z-index: 2;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+    }
+
+    &__gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            ellipse at center,
+            transparent 0%,
+            rgba(0, 0, 0, 0.3) 60%,
+            rgba(0, 0, 0, 0.8) 100%
+        );
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    &__particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.3;
+        
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        &::before {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: -5s;
+        }
+        
+        &::after {
+            width: 200px;
+            height: 200px;
+            bottom: 10%;
+            right: 10%;
+            animation-delay: -15s;
+        }
+    }
+
+    // Dynamic background states
+    &--bright {
+        .background__overlay {
+            background: linear-gradient(
+                135deg,
+                rgba(0, 0, 0, 0.5) 0%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.6) 100%
+            );
+        }
+        
+        .background__image {
+            filter: brightness(0.6) blur(1px);
+        }
+    }
+
+    &--dark {
+        .background__overlay {
+            background: linear-gradient(
+                135deg,
+                rgba(0, 0, 0, 0.8) 0%,
+                rgba(0, 0, 0, 0.6) 50%,
+                rgba(0, 0, 0, 0.9) 100%
+            );
+        }
+        
+        .background__image {
+            filter: brightness(0.3) blur(3px);
+        }
+    }
+
+    &--accent {
+        &::before {
+            background: linear-gradient(
+                135deg,
+                rgba(16, 185, 129, 0.2) 0%,
+                rgba(52, 211, 153, 0.15) 50%,
+                rgba(0, 0, 0, 0.5) 100%
+            );
+        }
+    }
+
+    // Animation states
+    &--animated {
+        .background__image {
+            animation: slowZoom 30s ease-in-out infinite alternate;
+        }
+        
+        .background__particles {
+            opacity: 0.5;
+        }
+    }
+
+    &--static {
+        .background__image {
+            animation: none;
+            transform: scale(1.05);
+        }
+        
+        .background__particles {
+            opacity: 0.2;
+        }
+    }
+
+    // Blur variations
+    &--blur-light {
+        .background__image {
+            filter: brightness(0.4) blur(1px);
+        }
+    }
+
+    &--blur-medium {
+        .background__image {
+            filter: brightness(0.4) blur(4px);
+        }
+    }
+
+    &--blur-heavy {
+        .background__image {
+            filter: brightness(0.3) blur(8px);
+        }
+    }
+
+    // Special effects
+    &--glitch {
+        .background__image {
+            animation: glitch 0.3s ease-in-out infinite alternate;
+        }
+    }
+
+    &--pulse {
+        .background__overlay {
+            animation: pulse 4s ease-in-out infinite;
+        }
+    }
+}
+
+// Canvas background for dynamic effects
+.background__canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.3;
+    mix-blend-mode: multiply;
+}
+
+// Video background support
+.background__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease;
+    filter: brightness(0.4) blur(2px);
+    transform: scale(1.1);
+    
+    &--active {
+        opacity: 1;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: $media_md) {
+    .background {
+        &__particles {
+            opacity: 0.1;
+            
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+        
+        &__image,
+        &__video {
+            filter: brightness(0.3) blur(3px);
+        }
+    }
+}
+
+@media (max-width: $media_sm) {
+    .background {
+        &__image,
+        &__video {
+            filter: brightness(0.2) blur(4px);
+            transform: scale(1.05);
+        }
+        
+        &__overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.8) 0%,
+                rgba(0, 0, 0, 0.9) 100%
+            );
+        }
+    }
+}
+
+// Reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+    .background {
+        &__image,
+        &__video {
+            animation: none !important;
+        }
+        
+        &__particles {
+            display: none;
+        }
+    }
+}
+
+// Theme-specific adjustments
+body.light-theme .background {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    
+    &__overlay {
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.7) 50%,
+            rgba(255, 255, 255, 0.95) 100%
+        );
+    }
+    
+    &__image,
+    &__video {
+        filter: brightness(0.8) blur(1px) sepia(0.1);
+    }
+}
+
+// Animations
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 0.1;
+    }
+}
+
+@keyframes slowZoom {
+    0% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: scale(1.1) skewX(0);
+        filter: brightness(0.4) blur(2px) hue-rotate(0deg);
+    }
+    25% {
+        transform: scale(1.11) skewX(1deg);
+        filter: brightness(0.5) blur(1px) hue-rotate(90deg);
+    }
+    50% {
+        transform: scale(1.1) skewX(0);
+        filter: brightness(0.3) blur(3px) hue-rotate(180deg);
+    }
+    75% {
+        transform: scale(1.09) skewX(-1deg);
+        filter: brightness(0.6) blur(1px) hue-rotate(270deg);
+    }
+    100% {
+        transform: scale(1.1) skewX(0);
+        filter: brightness(0.4) blur(2px) hue-rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
     }
 }

@@ -1,68 +1,527 @@
-.simple-button{
-    margin-right: 1em;
-    font-size: 1.3em;
-    background-color: rgba(0,0,0,0.3);
-    padding: 0.3em 1.2em;
-    display: flex;
-    border-radius: 1em;
+// Modern Button Component System
+.button {
+    display: inline-flex;
     align-items: center;
-    height: 2.8em;
-
-    > svg{
-        width: 1.5em;
-        height: 1.5em;
-
-        + span{
-            margin-left: 1em;
-        }
+    justify-content: center;
+    padding: 0.75em 1.5em;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent-color);
+    color: var(--text-primary);
+    font-size: 0.95em;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    min-height: 2.5em;
+    white-space: nowrap;
+    user-select: none;
+    
+    // Shimmer effect
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+        );
+        transition: left 0.5s ease;
     }
-
-    > span{
-        margin-top: -0.2em;
-    }
-
-    &.focus{
-        background-color: #fff;
-        color: #000;
-    }
-
-    &--filter{
+    
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        background: var(--accent-hover);
         
-
-        > span{
-            flex-shrink: 0;
+        &::before {
+            left: 100%;
         }
+    }
+    
+    &:active {
+        transform: translateY(0);
+        box-shadow: var(--shadow-sm);
+    }
+    
+    &:focus {
+        outline: none;
+        box-shadow: var(--shadow-lg), 0 0 0 3px rgba(99, 102, 241, 0.25);
+    }
+    
+    // Icon support
+    &__icon {
+        width: 1.2em;
+        height: 1.2em;
+        margin-right: 0.5em;
+        transition: transform 0.3s ease;
+        
+        &--right {
+            margin-right: 0;
+            margin-left: 0.5em;
+        }
+        
+        &--only {
+            margin: 0;
+        }
+    }
+    
+    &:hover &__icon {
+        transform: scale(1.1);
+    }
+    
+    // Loading state
+    &--loading {
+        pointer-events: none;
+        opacity: 0.7;
+        
+        .button__icon {
+            animation: spin 1s linear infinite;
+        }
+    }
+    
+    // Disabled state
+    &:disabled,
+    &--disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+        box-shadow: none !important;
+        
+        &:hover {
+            transform: none;
+            box-shadow: var(--shadow-sm);
+            background: var(--accent-color);
+        }
+    }
+    
+    // Size variations
+    &--xs {
+        padding: 0.4em 0.8em;
+        font-size: 0.8em;
+        min-height: 2em;
+        border-radius: 6px;
+        
+        .button__icon {
+            width: 0.9em;
+            height: 0.9em;
+        }
+    }
+    
+    &--sm {
+        padding: 0.5em 1em;
+        font-size: 0.85em;
+        min-height: 2.2em;
+        border-radius: 6px;
+        
+        .button__icon {
+            width: 1em;
+            height: 1em;
+        }
+    }
+    
+    &--lg {
+        padding: 1em 2em;
+        font-size: 1.1em;
+        min-height: 3em;
+        border-radius: 10px;
+        
+        .button__icon {
+            width: 1.4em;
+            height: 1.4em;
+        }
+    }
+    
+    &--xl {
+        padding: 1.2em 2.5em;
+        font-size: 1.2em;
+        min-height: 3.5em;
+        border-radius: 12px;
+        
+        .button__icon {
+            width: 1.6em;
+            height: 1.6em;
+        }
+    }
+    
+    // Style variations
+    &--secondary {
+        background: var(--secondary-bg);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+        
+        &:hover {
+            background: var(--card-bg);
+            border-color: var(--accent-color);
+        }
+    }
+    
+    &--outline {
+        background: transparent;
+        color: var(--accent-color);
+        border: 2px solid var(--accent-color);
+        
+        &:hover {
+            background: var(--accent-color);
+            color: var(--text-primary);
+        }
+    }
+    
+    &--ghost {
+        background: transparent;
+        color: var(--text-secondary);
+        box-shadow: none;
+        
+        &:hover {
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
+        }
+    }
+    
+    &--glass {
+        background: var(--glass-bg);
+        backdrop-filter: var(--blur-md);
+        border: 1px solid var(--glass-border);
+        color: var(--text-primary);
+        
+        &:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-color);
+        }
+    }
+    
+    &--gradient {
+        background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+        border: none;
+        
+        &:hover {
+            background: linear-gradient(135deg, var(--accent-hover), #4338ca);
+        }
+    }
+    
+    // Color variations
+    &--success {
+        background: var(--success-color);
+        
+        &:hover {
+            background: #059669;
+        }
+    }
+    
+    &--warning {
+        background: var(--warning-color);
+        color: var(--primary-bg);
+        
+        &:hover {
+            background: #d97706;
+        }
+    }
+    
+    &--error {
+        background: var(--error-color);
+        
+        &:hover {
+            background: #dc2626;
+        }
+    }
+    
+    // Shape variations
+    &--round {
+        border-radius: 50px;
+    }
+    
+    &--square {
+        border-radius: 4px;
+    }
+    
+    &--circle {
+        width: 2.5em;
+        height: 2.5em;
+        border-radius: 50%;
+        padding: 0;
+        
+        .button__icon {
+            margin: 0;
+        }
+        
+        &.button--sm {
+            width: 2em;
+            height: 2em;
+        }
+        
+        &.button--lg {
+            width: 3em;
+            height: 3em;
+        }
+    }
+    
+    // Full width
+    &--full {
+        width: 100%;
+    }
+    
+    // Special effects
+    &--glow {
+        box-shadow: var(--shadow-md), 0 0 20px rgba(99, 102, 241, 0.3);
+        
+        &:hover {
+            box-shadow: var(--shadow-lg), 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+    }
+    
+    &--pulse {
+        animation: buttonPulse 2s ease-in-out infinite;
+    }
+    
+    &--bounce:hover {
+        animation: bounce 0.6s ease;
+    }
+}
 
-        > div{
-            font-size: 0.7em;
-            padding: 0.3em 0.5em;
-            background-color: rgba(255,255,255,0.3);
-            border-radius: 0.3em;
-            margin-left: 1em;
+// Button groups
+.button-group {
+    display: inline-flex;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    
+    .button {
+        border-radius: 0;
+        border-right: 1px solid var(--border-color);
+        margin: 0;
+        
+        &:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        
+        &:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            border-right: none;
+        }
+        
+        &:hover {
+            z-index: 1;
+        }
+    }
+    
+    &--vertical {
+        flex-direction: column;
+        
+        .button {
+            border-right: none;
+            border-bottom: 1px solid var(--border-color);
             
-            &::first-letter{
-                text-transform: uppercase;
+            &:first-child {
+                border-radius: 8px 8px 0 0;
             }
-        }
-
-        @media screen and (min-width: $media_md) {
-            overflow: hidden;
-
-            > div{
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
+            
+            &:last-child {
+                border-radius: 0 0 8px 8px;
+                border-bottom: none;
             }
         }
     }
+}
 
-    &--invisible:not(.focus){
-        background-color: rgba(0,0,0,0.07);
+// Floating Action Button
+.fab {
+    @extend .button;
+    @extend .button--circle;
+    @extend .button--gradient;
+    
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    width: 3.5em;
+    height: 3.5em;
+    z-index: 1000;
+    box-shadow: var(--shadow-xl);
+    
+    &:hover {
+        transform: translateY(-4px) scale(1.1);
+        box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
     }
+    
+    &--mini {
+        width: 2.5em;
+        height: 2.5em;
+        bottom: 1.5em;
+        right: 1.5em;
+    }
+    
+    &--extended {
+        width: auto;
+        padding: 0 1.5em;
+        border-radius: 50px;
+    }
+}
 
-    @media screen and (max-width: $media_sm) {
-        &.filter--search span{
+// Toggle buttons
+.button-toggle {
+    @extend .button;
+    @extend .button--outline;
+    
+    &--active {
+        background: var(--accent-color);
+        color: var(--text-primary);
+        border-color: var(--accent-color);
+    }
+}
+
+// Responsive adjustments
+@media (max-width: $media_md) {
+    .button {
+        padding: 0.6em 1.2em;
+        font-size: 0.9em;
+        
+        &--lg {
+            padding: 0.8em 1.6em;
+            font-size: 1em;
+        }
+        
+        &--xl {
+            padding: 1em 2em;
+            font-size: 1.1em;
+        }
+    }
+    
+    .fab {
+        width: 3em;
+        height: 3em;
+        bottom: 1.5em;
+        right: 1.5em;
+    }
+}
+
+@media (max-width: $media_sm) {
+    .button {
+        padding: 0.5em 1em;
+        font-size: 0.85em;
+        min-height: 2.2em;
+        
+        &__icon {
+            width: 1em;
+            height: 1em;
+        }
+    }
+    
+    .button-group {
+        &:not(.button-group--vertical) {
+            flex-wrap: wrap;
+            
+            .button {
+                flex: 1;
+                min-width: 0;
+            }
+        }
+    }
+    
+    .fab {
+        width: 2.5em;
+        height: 2.5em;
+        bottom: 1em;
+        right: 1em;
+    }
+}
+
+// Animations
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes buttonPulse {
+    0%, 100% { 
+        box-shadow: var(--shadow-md), 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+    50% { 
+        box-shadow: var(--shadow-lg), 0 0 30px rgba(99, 102, 241, 0.6);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 60%, 100% { transform: translateY(-2px); }
+    40% { transform: translateY(-8px); }
+    80% { transform: translateY(-4px); }
+}
+
+// Dark theme adjustments
+body.dark-theme {
+    .button--secondary {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+        
+        &:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    }
+}
+
+// Light theme adjustments
+body.light-theme {
+    .button {
+        color: white;
+        
+        &--secondary {
+            background: #f8fafc;
+            color: #374151;
+            border-color: #d1d5db;
+            
+            &:hover {
+                background: #f1f5f9;
+                border-color: var(--accent-color);
+            }
+        }
+        
+        &--ghost {
+            color: #6b7280;
+            
+            &:hover {
+                color: #374151;
+                background: rgba(0, 0, 0, 0.05);
+            }
+        }
+    }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+    .button {
+        border: 2px solid currentColor;
+        
+        &--outline {
+            border-width: 3px;
+        }
+    }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+    .button {
+        transition: none;
+        
+        &:hover {
+            transform: none;
+        }
+        
+        &::before {
             display: none;
         }
+    }
+    
+    .button--pulse,
+    .button--bounce {
+        animation: none;
     }
 }

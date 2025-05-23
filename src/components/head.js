@@ -43,6 +43,38 @@ function init(){
         window.location.href = window.location.origin;
     })
 
+    // Add navigation item handlers
+    html.find('.head__nav-item').on('hover:enter',(e)=>{
+        let target = $(e.target)
+        let url = target.data('url')
+        let title = target.data('title')
+        let component = target.data('component')
+        let source = target.data('source')
+        
+        Activity.push({
+            url: url,
+            title: title,
+            component: component,
+            source: source
+        })
+    }).on('click',(e)=>{
+        if(DeviceInput.canClick(e.originalEvent)){
+            e.preventDefault()
+            let target = $(e.target)
+            let url = target.data('url')
+            let title = target.data('title')
+            let component = target.data('component')
+            let source = target.data('source')
+            
+            Activity.push({
+                url: url,
+                title: title,
+                component: component,
+                source: source
+            })
+        }
+    })
+
     Storage.listener.follow('change',(e)=>{
         if(e.name == 'account'){
             html.find('.open--profile').toggleClass('hide',e.value.token && window.lampa_settings.account_use ? false : true)

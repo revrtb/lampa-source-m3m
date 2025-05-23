@@ -1,1 +1,3 @@
-new_account branch designed for flixjunkie.com
+new_account branch designed for streamcowboy.com
+how to run 
+

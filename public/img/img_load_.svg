@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg fill="none" height="450" viewBox="0 0 300 450" width="300" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#3E3E3E" height="450" width="300"/>
+<svg height="200" viewBox="0 0 600 600" width="200" x="50" xmlns="http://www.w3.org/2000/svg" y="125">
+<!-- Full-width and full-height circle icon -->
+<circle cx="300" cy="300" fill="none" r="300" stroke="coral" stroke-width="40"/>
+<circle cx="300" cy="300" fill="coral" r="60"/>
+<circle cx="200" cy="150" fill="coral" r="45"/>
+<circle cx="400" cy="150" fill="coral" r="45"/>
+<circle cx="200" cy="450" fill="coral" r="45"/>
+<circle cx="400" cy="450" fill="coral" r="45"/>
+</svg></svg>

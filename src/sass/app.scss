@@ -10,6 +10,10 @@ $media_sm: 580px;
 $media_xm: 480px;
 $media_xs: 400px;
 
+// Import utility classes first
+@import 'components/utilities';
+
+// Core components
 @import 'components/welcome';
 @import 'components/lang';
 @import 'components/main';

@@ -1,13 +1,14 @@
 .category-full{
-    display: flex;
-    flex-wrap: wrap;
-
-    padding: 0 1em;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr) !important; // Force 8 equal columns filling full width
+    gap: 0; // No gaps between cards
+    padding: 0;
 
     .card{
         margin-left: 0;
         padding-left: 0.5em;
         padding-right: 0.5em;
+        width: 100%; // Fill the grid cell completely
 
         @media screen and (max-width: $media_xm) {
             padding-left: math.div($offset, 4);
@@ -19,6 +20,7 @@
         text-align: center;
         padding: 2em;
         margin-top: 1.5em;
+        grid-column: 1 / -1; // Span all columns
         width: 100%;
 
         > span{
