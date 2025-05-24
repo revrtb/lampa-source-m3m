@@ -3,9 +3,9 @@ let html = `<div class="head">
         <div class="head__left">
             <div class="head__logo">
                 <div class="head__logo-icon">
-                    <img src="./img/logo-icon.svg" />
+                    <img src="./img/cowboy.svg" />
                 </div>
-                <div class="head__logo-text">Lampa</div>
+                <div class="head__logo-text">Streamcowboy</div>
             </div>
 
             <div class="head__menu-toggle">

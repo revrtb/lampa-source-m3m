@@ -1,7 +1,7 @@
 .items-line{
     &__head{
         padding: 0 0.5em;
-        color: #1D79CA !important;
+        color: #10b981 !important;
         margin-bottom: 1.4em;
         display: flex;
         align-items: center;
@@ -10,7 +10,8 @@
 
     &__title{
         font-size: 1.6em;
-        font-weight: 400;
+        font-weight: 600;
+        color: #10b981;
 
         .full-person__photo{
             width: 2em;
@@ -25,12 +26,15 @@
     &__more{
         margin-left: 2em;
         padding: 0.4em 1em;
-        background: rgba(0,0,0,0.33);
+        background: rgba(16, 185, 129, 0.15);
         border-radius: 0.3em;
+        color: #10b981;
+        border: 1px solid rgba(16, 185, 129, 0.3);
 
         &.focus{
-            background-color: #fff;
+            background-color: #10b981;
             color: #000;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
         }
     }
 
