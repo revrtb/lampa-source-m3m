@@ -1,0 +1,7 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect fill="transparent" height="200" width="200"/>
+  <!-- TV Body -->
+  <rect fill="#10b981" height="80" rx="10" width="120" x="40" y="60"/>
+  <!-- Play Button -->
+  <polygon fill="white" points="90,80 90,120 125,100"/>
+</svg>
