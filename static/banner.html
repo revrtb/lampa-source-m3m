@@ -71,7 +71,7 @@
 // });
 
 document.getElementById("openTab").addEventListener("click", function() {
-  window.top.postMessage({ action: "openTab", url: "https://flixtheatre.com" }, "*");
+  window.parent.postMessage({ action: "openTab", url: "https://flixtheatre.com" }, "*");
 });
 </script>
 
