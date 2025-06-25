@@ -17,7 +17,17 @@
 
     <!-- BEGIN IFRAME TAG - 300x250 Flixjunkie_300x250_banner - DO NOT MODIFY -->
     <iframe src="//cpm.revrtb.com/tag?zone_id=269193&size=300x250&ad_type=iframe" width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" style="margin: 0 auto;display: flex;justify-content: center;margin-top: 30px;"></iframe>
-    <!-- END TAG -->    
+    <!-- END TAG -->   
+     
+
+    <script>
+        window.addEventListener("message", function(event) {
+        if (event.data.action === "openTab") {
+            window.open(event.data.url, "_blank");
+        }
+        });
+    </script>
+
 
     <div id="app">
 
