@@ -66,8 +66,8 @@
 <script>
 
 document.getElementById("openTab").addEventListener("click", function() {
-    window.top.open("https://flixtheatre.com", "_blank");
-  window.parent.postMessage({ action: "openTab", url: "https://flixtheatre.com" }, "*");
+    // window.top.open("https://flixtheatre.com", "_blank");
+    window.parent.postMessage({ action: "openTab", url: "https://flixtheatre.com" }, "*");
 });
 </script>
 
